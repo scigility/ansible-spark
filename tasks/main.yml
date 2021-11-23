@@ -7,6 +7,8 @@
         state=present
         groups="{{ spark_user_groups | join(',') }}"
   tags: ["spark-user"]
+  when: spark_user_install_enabled 
+  
 
 - name: Ensure Spark configuration directory exists
   file: path="{{ spark_conf_dir }}"

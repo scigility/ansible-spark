@@ -1,6 +1,11 @@
 ---
+
 spark_version: "1.3.1-bin-hadoop2.6"
 spark_mirror: "http://d3kbcqa49mib13.cloudfront.net"
+# Note: Spark >= 2.3.x are no longer on the cloudfront mirror
+#spark_version: "spark-3.1.1-bin-hadoop2.7"
+#spark_mirror: "https://dlcdn.apache.org/spark/spark-3.1.1"
+
 spark_install_java: yes      # Required to check if you need to install Java dependency
 
 spark_src_dir: "/usr/local/src"
@@ -17,6 +22,7 @@ spark_run_dir: "/run/spark"
 spark_user: "spark"           # the name of the (OS)user created for spark
 spark_user_groups: []         # Optional list of (OS)groups the new spark user should belong to
 spark_user_shell: "/bin/false"    # the spark user's default shell
+spark_user_install_enabled: True   # Flag to disable the OS user setup (when set to `False`)
 
 spark_symlinks_enabled: yes
 spark_shims_enabled: yes
@@ -24,6 +30,8 @@ spark_shims_enabled: yes
 spark_hive_metastore_db_installed: false
 spark_hive_site_properties: {}
 
+spark_env_lib_path: /usr/lib/hadoop/lib/native  # the spark-env LD_LIBRARY_PATH
+spark_env_hadoop_conf_dir: /etc/hadoop/conf     # the spark-env HADOOP_CONF_DIR
 spark_env_extras: {}
 spark_defaults_extras: {}
 

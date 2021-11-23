@@ -1,0 +1,44 @@
+---
+# Playbook to deploy a custom Spark-3.1.x version compabitle with CDH 6.3.x
+# (..initially w/out shuffle-service, history-server etc)
+# Related int. JIRA: https://scigility.atlassian.net/browse/SIT-145
+#
+- hosts: all
+  become: True
+  vars:
+    # Note: following is a custom build, not on any mirror site
+    spark_version: "3.1.1-bin-hadoop-3.0.0-cdh6.3.4"
+    #spark_mirror: "https://dlcdn.apache.org/spark/spark-3.1.1"
+    spark_mirror: "https://github.com/lhoss/spark/releases/download/v3.1.1_cdh6.3.4"
+    spark_src_dir: "/opt/src"
+    spark_conf_dir: "/etc/spark3_opt"
+    spark_usr_parent_dir: "/opt/spark"  #this is the folder where the spark archive will be extracted
+    ## TODO the "usr_dir" should NOT be the symlink dir used everywhere
+    spark_usr_dir: "/opt/spark/spark3"   #this is the symlink to the extracted/installed spark
+    spark_work_dir: "{{ spark_usr_dir }}/work"
+    spark_local_dirs: [] # optional list of spark-local dirs (can be used in SPARK_LOCAL_DIRS)
+    spark_local_dir_mode: "1777"
+    spark_tmp_dir: "{{ spark_usr_dir }}/tmp"
+    # TODO check if following dir exists on CDP
+    spark_lib_dir: "/var/lib/spark"   # the spark user dir
+    spark_log_dir: "/var/log/spark"
+    spark_run_dir: "/run/spark"
+    spark_install_java: False
+    spark_shims_enabled: False 
+    spark_symlinks_enabled: False
+    # TODO maybe: backport defaults+env configs from CDH or CDP
+    spark_env_extras: {}
+    spark_defaults_extras:
+        #spark.eventLog.enabled: "true"
+        spark.eventLog.enabled: "false"
+
+    ## New vars
+    spark_user_install_enabled: False
+    spark_env_lib_path: ""
+    # custom local vars (use only on my dev Env)
+    #spark_user: lhoss
+
+  roles:
+    #- role: lhoss.spark
+    - role: "../ansible-spark"
+  
