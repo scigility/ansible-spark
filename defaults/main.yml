@@ -34,6 +34,7 @@ spark_hive_site_properties: {}
 
 spark_env_lib_path: /usr/lib/hadoop/lib/native  # the spark-env LD_LIBRARY_PATH
 spark_env_hadoop_conf_dir: /etc/hadoop/conf     # the spark-env HADOOP_CONF_DIR
+spark_env_java_home:                            # optional: sets the JAVA_HOME in the spark-env.sh and also in the spark-defaults for the yarn executors
 spark_env_extras: {}
 spark_defaults_extras: {}
 

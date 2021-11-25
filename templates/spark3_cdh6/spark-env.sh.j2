@@ -62,8 +62,14 @@ export SPARK_LOCAL_DIRS="${SPARK_LOCAL_DIRS:-{{ spark_local_dirs|join(',') }}}"
 
 # New custom additions from CDH
 export SPARK_HOME={{ spark_env_spark_home }}
+{% if spark_env_hadoop_home | default('') | length > 0 %}
 export HADOOP_HOME={{ spark_env_hadoop_home }}
+{% endif %}
+{% if spark_env_java_home | default('') | length > 0 %}
+export JAVA_HOME={{ spark_env_java_home }}
+{% endif %}
 
+{# add additional extra custom ENV vars #}
 {% for key, value in spark_env_extras.items() | sort %}
 export {{ key }}="{{ value }}"
 {% endfor %}

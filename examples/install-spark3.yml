@@ -19,18 +19,16 @@
     spark_local_dirs: [] # optional list of spark-local dirs (can be used in SPARK_LOCAL_DIRS)
     spark_local_dir_mode: "1777"
     spark_tmp_dir: "{{ spark_usr_dir_orig }}/tmp"
-    # TODO check if following dir exists on CDP
     spark_lib_dir: "/var/lib/spark"   # the spark user dir
     spark_log_dir: "/var/log/spark"
     spark_run_dir: "/run/spark"
     spark_install_java: False
     spark_shims_enabled: False 
     spark_symlinks_enabled: False
-    # TODO maybe: backport defaults+env configs from CDH or CDP
+
+    # Note: Our custom templates also support the those extras vars, but not used yet
     spark_env_extras: {}
-    spark_defaults_extras:
-        #spark.eventLog.enabled: "true"
-        spark.eventLog.enabled: "false"
+    spark_defaults_extras: {}
 
     ## New role vars (overrides)
     spark_user_install_enabled: False
@@ -43,6 +41,9 @@
     spark_env_spark_home: "{{ spark_usr_dir_orig }}"
     # try using the Hadoop of CDH-6.3.4
     spark_env_hadoop_home: "{{ _hadoop_home }}"
+    # (For now) need to run our Spark3 with JDK11 (because it was compiled with JDK11)
+    # More infos: 
+    spark_env_java_home: /usr/lib/jvm/jre-11-openjdk
 
     ## vars used only in our custom spark-defaults template
     # before enabling driver logs, ensure the HDFS dir exists (var. below)
@@ -61,7 +62,7 @@
     spark_yarn_jars: "local:{{ spark_env_spark_home }}/jars/*"
     spark_yarn_appMasterEnv_pyspark_python: "/opt/cloudera/parcels/Anaconda-2019.07/bin/python"
 
-
+    
     # custom local vars (use only on my dev Env)
     #spark_user: lhoss
 
