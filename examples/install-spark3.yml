@@ -6,10 +6,12 @@
 - hosts: all
   become: True
   vars:
-    # Note: following is a custom build, not on any mirror site
+    #Note: the spark/tgz was build w/out the "-openjdk11" suffix (that I only added manually in the tgz filename later)
+    # .. and because when doing the "unarchive" the created folder will also not contain "-openjdk11", I kept the orig. version:
+    #spark_version: "3.1.1-bin-hadoop-3.0.0-cdh6.3.4-openjdk11"
     spark_version: "3.1.1-bin-hadoop-3.0.0-cdh6.3.4"
-    #spark_mirror: "https://dlcdn.apache.org/spark/spark-3.1.1"
-    spark_mirror: "https://github.com/lhoss/spark/releases/download/v3.1.1_cdh6.3.4"
+    #spark_mirror: "https://github.com/lhoss/spark/releases/download/v3.1.1_cdh6.3.4"
+    spark_mirror_url: "https://github.com/lhoss/spark/releases/download/v3.1.1_cdh6.3.4/spark-3.1.1-bin-hadoop-3.0.0-cdh6.3.4-openjdk11.tgz"
     spark_src_dir: "/opt/src"
     spark_conf_dir: "/etc/spark3_opt"
     spark_usr_parent_dir: "/opt/spark"  #this is the folder where the spark archive will be extracted
@@ -62,7 +64,7 @@
     spark_yarn_jars: "local:{{ spark_env_spark_home }}/jars/*"
     spark_yarn_appMasterEnv_pyspark_python: "/opt/cloudera/parcels/Anaconda-2019.07/bin/python"
 
-    
+
     # custom local vars (use only on my dev Env)
     #spark_user: lhoss
 

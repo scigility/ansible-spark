@@ -5,7 +5,7 @@ spark_mirror: "http://d3kbcqa49mib13.cloudfront.net"
 # Note: Spark >= 2.3.x are no longer on the cloudfront mirror
 #spark_version: "spark-3.1.1-bin-hadoop2.7"
 #spark_mirror: "https://dlcdn.apache.org/spark/spark-3.1.1"
-
+spark_mirror_url: "{{ spark_mirror }}/spark-{{ spark_version }}.tgz"   # extra url var, so it can be fully configured if needed
 spark_install_java: yes      # Required to check if you need to install Java dependency
 
 spark_src_dir: "/usr/local/src"
