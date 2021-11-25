@@ -1,0 +1,51 @@
+spark.authenticate=true
+spark.driver.log.dfsDir={{ spark_driver_log_dfsDir }}
+spark.driver.log.persistToDfs.enabled={{ spark_driver_log_persistToDfs_enabled }}
+spark.io.encryption.enabled=true
+spark.network.crypto.enabled=true
+spark.serializer=org.apache.spark.serializer.KryoSerializer
+spark.ui.enabled=true
+spark.ui.killEnabled=true
+spark.master=yarn
+spark.submit.deployMode=client
+spark.yarn.jars={{ spark_yarn_jars }}
+spark.driver.extraLibraryPath={{ spark_extraLibraryPath }}
+spark.executor.extraLibraryPath={{ spark_extraLibraryPath }}
+spark.yarn.am.extraLibraryPath={{ spark_extraLibraryPath }}
+spark.yarn.config.gatewayPath=/opt/cloudera/parcels
+{# Need to use raw jinja2 because of the curly braces in the value below #}
+{% raw %}
+spark.yarn.config.replacementPath={{HADOOP_COMMON_HOME}}/../../..
+{% endraw %}
+spark.yarn.appMasterEnv.PYSPARK_PYTHON={{ spark_yarn_appMasterEnv_pyspark_python }}
+spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON={{ spark_yarn_appMasterEnv_pyspark_python }}
+spark.yarn.appMasterEnv.MKL_NUM_THREADS=1
+spark.yarn.appMasterEnv.OPENBLAS_NUM_THREADS=1
+spark.executorEnv.MKL_NUM_THREADS=1
+spark.executorEnv.OPENBLAS_NUM_THREADS=1
+{# Spark eventLog and historyServer config #}
+#TODO check if it's ok to have uppercase boolean values like "False"
+spark.eventLog.enabled={{ spark_eventLog_enabled }}
+{% if spark_eventLog_enabled | default(false) %}
+spark.eventLog.dir={{ spark_eventLog_dir }}
+spark.yarn.historyServer.address={{ spark_historyServer_address }}
+spark.yarn.historyServer.allowTracking=true
+{% endif %}
+{# Extra spark lineage features (Cloudera only) #}
+spark.lineage.enabled={{ spark_lineage_enabled }}
+{% if spark_lineage_enabled | default(false) %}
+spark.lineage.log.dir=/var/log/spark/lineage
+spark.extraListeners=com.cloudera.spark.lineage.NavigatorAppListener
+spark.sql.queryExecutionListeners=com.cloudera.spark.lineage.NavigatorQueryListener
+{% endif %}
+spark.shuffle.service.enabled={{ spark_shuffle_service_enabled }}
+spark.shuffle.service.port={{ spark_shuffle_service_port }}
+spark.dynamicAllocation.enabled={{ spark_dynamicAllocation_enabled }}
+{% if spark_dynamicAllocation_enabled | default(false) %}
+spark.dynamicAllocation.executorIdleTimeout=60
+spark.dynamicAllocation.maxExecutors=8
+spark.dynamicAllocation.minExecutors=0
+spark.dynamicAllocation.schedulerBacklogTimeout=1
+{% endif %}
+
+
