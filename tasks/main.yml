@@ -19,7 +19,7 @@
   file: path="{{ item }}"
         owner={{ spark_user }}
         group={{ spark_user }}
-        mode=0775
+        mode=0755
         state=directory
   with_items:
     - "{{ spark_log_dir }}"
@@ -88,12 +88,12 @@
   tags: ["spark-local-dirs"]
 
 - name: Configure Spark environment
-  template: src=spark-env.sh.j2
+  template: src="{{ spark_env_src_path | default('spark-env.sh.j2') }}"
             dest="{{ spark_usr_parent_dir }}/spark-{{ spark_version }}/conf/spark-env.sh"
   tags: ["config"]
 
 - name: Configure Spark defaults config file
-  template: src=spark-defaults.conf.j2
+  template: src="{{ spark_defaults_src_path | default('spark-defaults.conf.j2') }}"
             dest="{{ spark_usr_parent_dir }}/spark-{{ spark_version }}/conf/spark-defaults.conf"
   tags: ["config"]
 

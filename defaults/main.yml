@@ -12,6 +12,8 @@ spark_src_dir: "/usr/local/src"
 spark_conf_dir: "/etc/spark"
 spark_usr_parent_dir: "/usr/lib"  #this is the folder where the spark archive will be extracted
 spark_usr_dir: "/usr/lib/spark"   #this is the symlink to the extracted/installed spark
+spark_usr_dir_orig: "{{spark_usr_parent_dir}}/spark-{{spark_version}}"
+spark_conf_dir_orig: "{{spark_usr_dir_orig}}/conf"
 spark_work_dir: "/usr/lib/spark/work"
 spark_local_dirs: [] # optional list of spark-local dirs (can be used in SPARK_LOCAL_DIRS)
 spark_local_dir_mode: "1777"
@@ -34,6 +36,10 @@ spark_env_lib_path: /usr/lib/hadoop/lib/native  # the spark-env LD_LIBRARY_PATH
 spark_env_hadoop_conf_dir: /etc/hadoop/conf     # the spark-env HADOOP_CONF_DIR
 spark_env_extras: {}
 spark_defaults_extras: {}
+
+spark_defaults_src_path: spark-defaults.conf.j2
+spark_env_src_path: spark-env.sh.j2
+
 
 # Logger levels set to the official defaults
 # Ref: https://github.com/apache/spark/blob/master/conf/log4j.properties.template
