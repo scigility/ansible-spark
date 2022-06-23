@@ -34,15 +34,24 @@
     - "{{ spark_src_dir }}"
     - "{{ spark_usr_parent_dir }}"
 
+- name: copy Spark distribution to hosts
+  copy:
+    src: "files/spark-{{ spark_version }}.tgz"
+    dest: "{{ spark_src_dir }}/spark-{{ spark_version }}.tgz" 
+  when: spark_mirror_url | length == 0
+
 - name: Download Spark distribution
-  get_url: url="{{ spark_mirror_url }}"
-           dest="{{ spark_src_dir }}/spark-{{ spark_version }}.tgz"
+  get_url:
+    url: "{{ spark_mirror_url }}"
+    dest: "{{ spark_src_dir }}/spark-{{ spark_version }}.tgz"
+  when: spark_mirror_url | length > 0
 
 - name: Extract Spark distribution
-  unarchive: src="{{ spark_src_dir }}/spark-{{ spark_version }}.tgz"
-             dest="{{ spark_usr_parent_dir }}"
-             copy=no
-             creates="{{ spark_usr_dir_orig }}"
+  unarchive:
+    src: "{{ spark_src_dir }}/spark-{{ spark_version }}.tgz"
+    dest: "{{ spark_usr_parent_dir }}"
+    copy: no
+    creates: "{{ spark_usr_dir_orig }}"
 
 - name: Setup Spark distribution symlinks
   file: src="{{ item.src }}"
