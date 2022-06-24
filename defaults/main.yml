@@ -41,7 +41,6 @@ spark_defaults_extras: {}
 spark_defaults_src_path: spark-defaults.conf.j2
 spark_env_src_path: spark-env.sh.j2
 
-
 # Logger levels set to the official defaults
 # Ref: https://github.com/apache/spark/blob/master/conf/log4j.properties.template
 spark_log4j_loggers:

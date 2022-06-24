@@ -1,15 +1,13 @@
 ---
-# Playbook to deploy a custom Spark-3.1.x version compabitle with CDH 6.3.x
+# Playbook to deploy a custom Spark-3.2.x version compatible with CDP 7.1.7
 # (..initially w/out shuffle-service, history-server etc)
 # Related int. JIRA: https://scigility.atlassian.net/browse/SIT-145
 #
 - hosts: all
   become: yes
   vars:
-    #Note: the spark/tgz was build w/out the "-openjdk11" suffix (that I only added manually in the tgz filename later)
-    # .. and because when doing the "unarchive" the created folder will also not contain "-openjdk11", I kept the orig. version:
     spark_version: "3.2.0-bin-with-hadoop3.1.1-cdp7.1.7"
-    # spark_mirror_url: "https://github.com/scigility/spark/releases/download/v3.2.0-cdp7.1.7/spark-3.2.0-bin-with-hadoop3.1.1-cdp7.1.7.tgz"
+    # Example spark_mirror_url: "https://github.com/scigility/spark/releases/download/v3.2.0-cdp7.1.7/spark-3.2.0-bin-with-hadoop3.1.1-cdp7.1.7.tgz"
     spark_mirror_url: "" # empty when copying local file
     spark_src_dir: "/opt/src"
     spark_conf_dir: "/etc/spark3.2.0_opt"
@@ -20,18 +18,16 @@
     spark_local_dirs: [] # optional list of spark-local dirs (can be used in SPARK_LOCAL_DIRS)
     spark_local_dir_mode: "1777"
     spark_tmp_dir: "{{ spark_usr_dir_orig }}/tmp"
-    spark_lib_dir: "/var/lib/spark"   # the spark user dir
+    spark_lib_dir: "/var/lib/spark"
     spark_log_dir: "/var/log/spark"
     spark_run_dir: "/run/spark"
     spark_install_java: False
-    spark_shims_enabled: False 
+    spark_shims_enabled: False
     spark_symlinks_enabled: False
 
     # Note: Our custom templates also support the those extras vars, but not used yet
     spark_env_extras: {}
     spark_defaults_extras: {}
-
-    ## New role vars (overrides)
     spark_user_install_enabled: False
     spark_env_lib_path: ""
     spark_defaults_src_path: spark3.2.0_cdp7.1.7/spark-defaults.conf.j2
@@ -40,10 +36,8 @@
     ## vars only used in our custom spark-env template
     _hadoop_home: "/opt/cloudera/parcels/CDH/lib/hadoop"
     spark_env_spark_home: "{{ spark_usr_dir_orig }}"
-    # try using the Hadoop of CDP-7.1.7
+    # use existing Hadoop from CDP-7.1.7
     spark_env_hadoop_home: "{{ _hadoop_home }}"
-    # (For now) need to run our Spark3 with JDK11 (because it was compiled with JDK11)
-    # More infos: 
     spark_env_java_home: /usr/lib/jvm/jre-11-openjdk
     spark_env_hadoop_conf_dir: /etc/hadoop/conf 
 
@@ -59,16 +53,13 @@
     spark_eventLog_enabled: true
     spark_eventLog_dir: "***REMOVED***:8020/user/spark/spark3ApplicationHistory" 
     spark_historyServer_address: "http://srv-ap-nn01-b3.prod.zsvr.org:18089"
-    # Let's try to re-use the CDH Hadoop native libs
+    # re-use the CDH Hadoop native libs
     spark_extraLibraryPath: "{{ _hadoop_home }}/lib/native"
     spark_yarn_jars: "local:{{ spark_env_spark_home }}/jars/*"
     spark_yarn_appMasterEnv_pyspark_python: "/opt/cloudera/parcels/Anaconda-2019.07/bin/python"
 
-
     # custom local vars (use only on my dev Env)
     #spark_user: lhoss
-
   roles:
-    #- role: lhoss.spark
     - role: "../ansible-spark"
   

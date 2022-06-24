@@ -12,5 +12,3 @@ galaxy_info:
     - precise
   categories:
   - system
-#dependencies:
-#  - { role: "azavea.java",  when: spark_install_java }
