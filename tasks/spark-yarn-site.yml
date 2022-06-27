@@ -1,0 +1,8 @@
+---
+
+- name: copy yarn-conf files
+  copy:
+    src: "{{ item }}"
+    dest: "{{spark_usr_parent_dir}}/spark-{{spark_version}}/conf/yarn-conf/{{ item | basename }}"
+  with_fileglob:
+    - files/spark3.2.0_cdp7.1.7/yarn-conf/*

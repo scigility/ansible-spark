@@ -12,8 +12,11 @@
 
 - name: Ensure Spark configuration directory exists
   file:
-    path: "{{ spark_conf_dir }}"
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - "{{ spark_conf_dir }}"
+    - "{{ spark_yarn_conf_dir }}"
   tags: ["config"]
 
 - name: Ensure Spark log and run directories exist
@@ -117,6 +120,9 @@
 
 - include: spark-hive-site.yml
   tags: ["config","spark-hive-site"]
+
+- include: spark-yarn-site.yml
+  tags: ["config","spark-yarn-site"]
 
 - include: spark-log4j.yml
   vars:

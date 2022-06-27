@@ -58,6 +58,7 @@
     spark_yarn_jars: "local:{{ spark_env_spark_home }}/jars/*"
     spark_yarn_appMasterEnv_pyspark_python: "/opt/cloudera/parcels/Anaconda-2019.07/bin/python"
 
+    spark_yarn_conf_dir: "{{ spark_usr_parent_dir }}/spark-{{ spark_version }}/conf/yarn-conf"
     # custom local vars (use only on my dev Env)
     #spark_user: lhoss
   roles:
