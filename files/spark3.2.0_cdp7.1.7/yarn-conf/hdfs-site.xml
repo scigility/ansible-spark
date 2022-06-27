@@ -114,4 +114,8 @@
     <name>dfs.http.policy</name>
     <value>HTTPS_ONLY</value>
   </property>
+  <property>
+    <name>dfs.encryption.key.provider.uri</name>
+    <value>kms://https@srv-ap-nn01-b3.prod.zsvr.org;srv-ap-nn02-b4.prod.zsvr.org:9494/kms</value>
+  </property>
 </configuration>
