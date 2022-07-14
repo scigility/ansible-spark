@@ -58,3 +58,6 @@ spark.dynamicAllocation.schedulerBacklogTimeout=1
 {% for key, value in spark_defaults_extras.items() | sort %}
 {{ key }}={{ value }}
 {% endfor %}
+spark.hadoop.fs.s3a.committer.name=directory
+spark.sql.sources.commitProtocolClass=org.apache.spark.internal.io.cloud.PathOutputCommitProtocol
+spark.sql.parquet.output.committer.class=org.apache.spark.internal.io.cloud.BindingParquetOutputCommitter
