@@ -4,7 +4,7 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>***REMOVED***:8020</value>
+    <value>hdfs://srv-ap-nn01-b3.prod.zsvr.org:8020</value>
   </property>
   <property>
     <name>ipc.client.connection.maxidletime</name>

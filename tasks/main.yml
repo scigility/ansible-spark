@@ -16,7 +16,6 @@
     state: directory
   with_items:
     - "{{ spark_conf_dir }}"
-    - "{{ spark_yarn_conf_dir }}"
   tags: ["config"]
 
 - name: Ensure Spark log and run directories exist
@@ -58,6 +57,9 @@
     dest: "{{ spark_usr_parent_dir }}"
     copy: no
     creates: "{{ spark_usr_dir_orig }}"
+    owner: "{{ spark_user }}"
+    group: "{{ spark_user }}"
+    mode: 0755
 
 - name: Setup Spark distribution symlinks
   file:
@@ -94,6 +96,7 @@
   with_items:
     - "{{ spark_work_dir }}"
     - "{{ spark_tmp_dir }}"
+    - "{{ spark_yarn_conf_dir }}"
 
 - name: Ensure Spark local directories exist
   file:
