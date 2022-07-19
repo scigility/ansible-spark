@@ -36,31 +36,31 @@
   </property>
   <property>
     <name>yarn.resourcemanager.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:8032</value>
+    <value>**REMOVED**:8032</value>
   </property>
   <property>
     <name>yarn.resourcemanager.admin.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:8033</value>
+    <value>**REMOVED**:8033</value>
   </property>
   <property>
     <name>yarn.resourcemanager.scheduler.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:8030</value>
+    <value>**REMOVED**:8030</value>
   </property>
   <property>
     <name>yarn.resourcemanager.resource-tracker.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:8031</value>
+    <value>**REMOVED**:8031</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:8088</value>
+    <value>**REMOVED**:8088</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.https.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:8090</value>
+    <value>**REMOVED**:8090</value>
   </property>
   <property>
     <name>yarn.resourcemanager.zk-address</name>
-    <value>srv-ap-cdh01-b3.prod.zsvr.org:2181,srv-ap-nn02-b4.prod.zsvr.org:2181,srv-ap-nn01-b3.prod.zsvr.org:2181</value>
+    <value>**REMOVED**:2181,**REMOVED**:2181,**REMOVED**:2181</value>
   </property>
   <property>
     <name>yarn.resourcemanager.store.class</name>
@@ -176,7 +176,7 @@
   </property>
   <property>
     <name>hadoop.registry.zk.quorum</name>
-    <value>srv-ap-cdh01-b3.prod.zsvr.org:2181,srv-ap-nn02-b4.prod.zsvr.org:2181,srv-ap-nn01-b3.prod.zsvr.org:2181</value>
+    <value>**REMOVED**:2181,**REMOVED**:2181,**REMOVED**:2181</value>
   </property>
   <property>
     <name>yarn.service.framework.path</name>

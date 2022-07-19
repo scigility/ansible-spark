@@ -4,7 +4,7 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://srv-ap-nn01-b3.prod.zsvr.org:8020</value>
+    <value>hdfs://**REMOVED**:8020</value>
   </property>
   <property>
     <name>ipc.client.connection.maxidletime</name>
@@ -40,18 +40,18 @@
   </property>
   <property>
     <name>hadoop.security.key.provider.path</name>
-    <value>kms://https@srv-ap-nn01-b3.prod.zsvr.org;srv-ap-nn02-b4.prod.zsvr.org:9494/kms</value>
+    <value>kms://https@**REMOVED**;**REMOVED**:9494/kms</value>
   </property>
   <property>
     <name>hadoop.security.auth_to_local</name>
-    <value>RULE:[2:$1@$0](rangeradmin@AP.ZSVR.ORG)s/(.*)@AP.ZSVR.ORG/ranger/
-RULE:[2:$1@$0](rangertagsync@AP.ZSVR.ORG)s/(.*)@AP.ZSVR.ORG/rangertagsync/
-RULE:[2:$1@$0](rangerusersync@AP.ZSVR.ORG)s/(.*)@AP.ZSVR.ORG/rangerusersync/
-RULE:[2:$1@$0](rangerkms@AP.ZSVR.ORG)s/(.*)@AP.ZSVR.ORG/keyadmin/
-RULE:[1:$1@$0](.*@\QPROD.ZSVR.ORG\E$)s/@\QPROD.ZSVR.ORG\E$//
-RULE:[2:$1@$0](.*@\QPROD.ZSVR.ORG\E$)s/@\QPROD.ZSVR.ORG\E$//
-RULE:[1:$1@$0](.*@\Qprod.zsvr.org\E$)s/@\Qprod.zsvr.org\E$//
-RULE:[2:$1@$0](.*@\Qprod.zsvr.org\E$)s/@\Qprod.zsvr.org\E$//
+    <value>RULE:[2:$1@$0](rangeradmin@<domain>)s/(.*)@<domain>/ranger/
+RULE:[2:$1@$0](rangertagsync@<domain>)s/(.*)@<domain>/rangertagsync/
+RULE:[2:$1@$0](rangerusersync@<domain>)s/(.*)@<domain>/rangerusersync/
+RULE:[2:$1@$0](rangerkms@<domain>)s/(.*)@<domain>/keyadmin/
+RULE:[1:$1@$0](.*@\<domain>\E$)s/@\<domain>\E$//
+RULE:[2:$1@$0](.*@\<domain>\E$)s/@\<domain>\E$//
+RULE:[1:$1@$0](.*@\<domain>\E$)s/@\<domain>\E$//
+RULE:[2:$1@$0](.*@\<domain>\E$)s/@\<domain>\E$//
 DEFAULT</value>
   </property>
   <property>

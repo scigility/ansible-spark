@@ -8,11 +8,11 @@
   </property>
   <property>
     <name>dfs.namenode.servicerpc-address</name>
-    <value>srv-ap-nn01-b3.prod.zsvr.org:8022</value>
+    <value>**REMOVED**:8022</value>
   </property>
   <property>
     <name>dfs.https.address</name>
-    <value>srv-ap-nn01-b3.prod.zsvr.org:9871</value>
+    <value>**REMOVED**:9871</value>
   </property>
   <property>
     <name>dfs.https.port</name>
@@ -20,7 +20,7 @@
   </property>
   <property>
     <name>dfs.namenode.http-address</name>
-    <value>srv-ap-nn01-b3.prod.zsvr.org:9870</value>
+    <value>**REMOVED**:9870</value>
   </property>
   <property>
     <name>dfs.replication</name>
@@ -108,7 +108,7 @@
   </property>
   <property>
     <name>hadoop.security.key.provider.path</name>
-    <value>kms://https@srv-ap-nn01-b3.prod.zsvr.org;srv-ap-nn02-b4.prod.zsvr.org:9494/kms</value>
+    <value>kms://https@**REMOVED**;**REMOVED**:9494/kms</value>
   </property>
   <property>
     <name>dfs.http.policy</name>
@@ -116,6 +116,6 @@
   </property>
   <property>
     <name>dfs.encryption.key.provider.uri</name>
-    <value>kms://https@srv-ap-nn01-b3.prod.zsvr.org;srv-ap-nn02-b4.prod.zsvr.org:9494/kms</value>
+    <value>kms://https@**REMOVED**;**REMOVED**:9494/kms</value>
   </property>
 </configuration>

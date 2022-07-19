@@ -51,8 +51,8 @@
     spark_dynamicAllocation_enabled: "{{ spark_shuffle_service_enabled }}"
     spark_lineage_enabled: false
     spark_eventLog_enabled: true
-    spark_eventLog_dir: "hdfs://srv-ap-nn01-b3.prod.zsvr.org:8020/user/spark/spark3ApplicationHistory" 
-    spark_historyServer_address: "http://srv-ap-nn01-b3.prod.zsvr.org:18089"
+    spark_eventLog_dir: "hdfs://**REMOVED**:8020/user/spark/spark3ApplicationHistory" 
+    spark_historyServer_address: "http://**REMOVED**:18089"
     # re-use the CDH Hadoop native libs
     spark_extraLibraryPath: "{{ _hadoop_home }}/lib/native"
     spark_yarn_jars: "local:{{ spark_env_spark_home }}/jars/*"

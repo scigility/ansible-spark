@@ -80,23 +80,23 @@
   </property>
   <property>
     <name>mapreduce.jobhistory.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:10020</value>
+    <value>**REMOVED**:10020</value>
   </property>
   <property>
     <name>mapreduce.jobhistory.webapp.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:19888</value>
+    <value>**REMOVED**:19888</value>
   </property>
   <property>
     <name>mapreduce.jobhistory.webapp.https.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:19890</value>
+    <value>**REMOVED**:19890</value>
   </property>
   <property>
     <name>mapreduce.jobhistory.admin.address</name>
-    <value>srv-ap-nn02-b4.prod.zsvr.org:10033</value>
+    <value>**REMOVED**:10033</value>
   </property>
   <property>
     <name>mapreduce.jobhistory.principal</name>
-    <value>mapred/_HOST@AP.ZSVR.ORG</value>
+    <value>mapred/_HOST@<domain></value>
   </property>
   <property>
     <name>mapreduce.framework.name</name>
@@ -164,7 +164,7 @@
   </property>
   <property>
     <name>mapreduce.application.framework.path</name>
-    <value>hdfs://srv-ap-nn01-b3.prod.zsvr.org:8020//user/yarn/mapreduce/mr-framework/3.1.1.7.1.7.0-551-mr-framework.tar.gz#mr-framework</value>
+    <value>hdfs://**REMOVED**:8020//user/yarn/mapreduce/mr-framework/3.1.1.7.1.7.0-551-mr-framework.tar.gz#mr-framework</value>
   </property>
   <property>
     <name>mapreduce.jobhistory.jhist.format</name>
